@@ -1,0 +1,42 @@
+let answeredQuestions = 0;
+        for (let value of formData.values()) {
+            score += parseInt(value);
+            answeredQuestions++;
+        }
+
+        let resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        
+        if (answeredQuestions < totalQuestions) {
+            resultDiv.style.background = "#fff3cd";
+            resultDiv.style.borderColor = "#ffeeba";
+            resultDiv.style.color = "#856404";
+            resultDiv.innerHTML = "يرجى الإجابة على جميع الأسئلة (أجبت على " + answeredQuestions + " من " + totalQuestions + ")";
+            return;
+        }
+
+        resultDiv.innerHTML = "درجتك النهائية: " + score + " من " + totalQuestions;
+        
+        if(score >= 9) {
+            resultDiv.style.background = "#d4edda";
+            resultDiv.style.borderColor = "#c3e6cb";
+            resultDiv.style.color = "#155724";
+            resultDiv.innerHTML += "<br> ممتاز! وعيك بقضية الأسرى مشرف جداً.";
+        } else if(score >= 6) {
+            resultDiv.style.background = "#d1ecf1";
+            resultDiv.style.borderColor = "#bee5eb";
+            resultDiv.style.color = "#0c5460";
+            resultDiv.innerHTML += "<br> جيد، ولكن ننصحك بالقراءة أكثر عن تفاصيل قضية الأسرى.";
+        } else {
+            resultDiv.style.background = "#f8d7da";
+            resultDiv.style.borderColor = "#f5c6cb";
+            resultDiv.style.color = "#721c24";
+            resultDiv.innerHTML += "<br> من المهم مراجعة المعلومات حول قضيتنا الوطنية.";
+        }
+        
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
